@@ -50,10 +50,8 @@ public class NBody {
       for(int i = 0; i < numPlanets; i++){
         // trim() ensure there is no white space at the start and end
         String line = bufferedReader.readLine().trim();
-        System.out.println(line);
         // regex '\\s+' split string by white spaces of variable lengths
         String[] buffer = line.split("\\s+");
-        System.out.println(buffer[0]);
 
         // parse x and y coordinates
         double x = Double.parseDouble(buffer[0]);
