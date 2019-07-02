@@ -136,8 +136,8 @@ public class NBody {
     StdOut.printf("%.2e\n", radius);
     for (int i = 0; i < planets.length; i++) {
       StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-              planets[i].getXxPos(), planets[i].getYyPos(), planets[i].getXxVel(),
-              planets[i].getYyVel(), planets[i].getMass(), planets[i].getImgFileName());
+              planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+              planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
     }
   }
 }
