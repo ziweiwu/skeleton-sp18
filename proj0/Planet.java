@@ -2,12 +2,12 @@ import java.lang.Math.*;
 import java.util.List;
 
 public class Planet {
-  private double xxPos; // its current x position
-  private double yyPos; // its current y position
-  private double xxVel; // its current velocity in the x direction
-  private double yyVel; // its current velocity in the y direction
-  private double mass;  // its mass
-  private String imgFileName; // name of the file that corresponds to image that depicts the planet e.g. jupiter.gif
+  public double xxPos; // its current x position
+  public double yyPos; // its current y position
+  public double xxVel; // its current velocity in the x direction
+  public double yyVel; // its current velocity in the y direction
+  public double mass;  // its mass
+  public String imgFileName; // name of the file that corresponds to image that depicts the planet e.g. jupiter.gif
 
   // gravity constant (note: java supports scientific notation)
   private static final double G = 6.674e-11;
