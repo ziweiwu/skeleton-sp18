@@ -2,12 +2,12 @@ import java.lang.Math.*;
 import java.util.List;
 
 public class Planet {
-  double xxPos; // its current x position
-  double yyPos; // its current y position
-  double xxVel; // its current velocity in the x direction
-  double yyVel; // its current velocity in the y direction
-  double mass;  // its mass
-  String imgFileName; // name of the file that corresponds to image that depicts the planet e.g. jupiter.gif
+  private double xxPos; // its current x position
+  private double yyPos; // its current y position
+  private double xxVel; // its current velocity in the x direction
+  private double yyVel; // its current velocity in the y direction
+  private double mass;  // its mass
+  private String imgFileName; // name of the file that corresponds to image that depicts the planet e.g. jupiter.gif
 
   // gravity constant (note: java supports scientific notation)
   private static final double G = 6.674e-11;
@@ -33,7 +33,7 @@ public class Planet {
   }
 
   // calculate distance between current planet and another planet
-  double calcDistance(Planet anotherPlanet){
+  private double calcDistance(Planet anotherPlanet){
     double distanceX = anotherPlanet.xxPos - this.xxPos;
     double distanceY = anotherPlanet.yyPos - this.yyPos;
     double distance = Math.sqrt(Math.pow(distanceX, 2.0) + Math.pow(distanceY, 2.0));
@@ -41,14 +41,14 @@ public class Planet {
   }
 
   // calculate the force exerted on this planet by another planet
-  double calcForceExertedBy(Planet anotherPlanet) {
+  private double calcForceExertedBy(Planet anotherPlanet) {
     double r = calcDistance(anotherPlanet);
     double F = (G * anotherPlanet.mass * mass) / Math.pow(r, 2.0);
     return F;
   }
 
   // compute the force exerted on x direction
-  double calcForceExertedByX(Planet anotherPlanet){
+  private double calcForceExertedByX(Planet anotherPlanet){
     double F = calcForceExertedBy(anotherPlanet);
     double dx = anotherPlanet.xxPos - this.xxPos;
     double r = calcDistance(anotherPlanet);
@@ -57,7 +57,7 @@ public class Planet {
   }
 
   // compute the force exerted on y direction
-  double calcForceExertedByY(Planet anotherPlanet){
+  private double calcForceExertedByY(Planet anotherPlanet){
     double F = calcForceExertedBy(anotherPlanet);
     double dy = anotherPlanet.yyPos - this.yyPos;
     double r = calcDistance(anotherPlanet);
@@ -66,7 +66,7 @@ public class Planet {
   }
 
   // compute the net force exerted on x direction
-  double calcNetForceExertedByX(Planet[] allPlanets) {
+  public double calcNetForceExertedByX(Planet[] allPlanets) {
     double FxNet = 0.0;
     for(Planet planet: allPlanets){
       if(planet.equals(this)){
@@ -78,7 +78,7 @@ public class Planet {
   }
 
   // compute the net force exerted on y direction
-  double calcNetForceExertedByY(Planet[] allPlanets) {
+  public double calcNetForceExertedByY(Planet[] allPlanets) {
     double FyNet = 0.0;
     for(Planet planet: allPlanets){
       if(planet.equals(this)){
@@ -90,7 +90,7 @@ public class Planet {
   }
 
   // update the velocity and position based on net x and y force
-  void update(double t, double fX, double fY){
+  public void update(double t, double fX, double fY){
     // compute acceleration on x and y direction
     double aX = fX/this.mass;
     double aY = fY/this.mass;
@@ -105,7 +105,56 @@ public class Planet {
   }
 
   // draw planet
-  void draw(){
+  public void draw(){
     StdDraw.picture(this.xxPos, this.yyPos, "./images/" + this.imgFileName);
+  }
+
+  // getters and setters
+  public double getXxPos() {
+    return xxPos;
+  }
+
+  public void setXxPos(double xxPos) {
+    this.xxPos = xxPos;
+  }
+
+  public double getYyPos() {
+    return yyPos;
+  }
+
+  public void setYyPos(double yyPos) {
+    this.yyPos = yyPos;
+  }
+
+  public double getXxVel() {
+    return xxVel;
+  }
+
+  public void setXxVel(double xxVel) {
+    this.xxVel = xxVel;
+  }
+
+  public double getYyVel() {
+    return yyVel;
+  }
+
+  public void setYyVel(double yyVel) {
+    this.yyVel = yyVel;
+  }
+
+  public double getMass() {
+    return mass;
+  }
+
+  public void setMass(double mass) {
+    this.mass = mass;
+  }
+
+  public String getImgFileName() {
+    return imgFileName;
+  }
+
+  public void setImgFileName(String imgFileName) {
+    this.imgFileName = imgFileName;
   }
 }
