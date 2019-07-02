@@ -33,7 +33,7 @@ public class Planet {
   }
 
   // calculate distance between current planet and another planet
-  private double calcDistance(Planet anotherPlanet){
+  public double calcDistance(Planet anotherPlanet){
     double distanceX = anotherPlanet.xxPos - this.xxPos;
     double distanceY = anotherPlanet.yyPos - this.yyPos;
     double distance = Math.sqrt(Math.pow(distanceX, 2.0) + Math.pow(distanceY, 2.0));
@@ -41,14 +41,14 @@ public class Planet {
   }
 
   // calculate the force exerted on this planet by another planet
-  private double calcForceExertedBy(Planet anotherPlanet) {
+  public double calcForceExertedBy(Planet anotherPlanet) {
     double r = calcDistance(anotherPlanet);
     double F = (G * anotherPlanet.mass * mass) / Math.pow(r, 2.0);
     return F;
   }
 
   // compute the force exerted on x direction
-  private double calcForceExertedByX(Planet anotherPlanet){
+  public double calcForceExertedByX(Planet anotherPlanet){
     double F = calcForceExertedBy(anotherPlanet);
     double dx = anotherPlanet.xxPos - this.xxPos;
     double r = calcDistance(anotherPlanet);
@@ -57,7 +57,7 @@ public class Planet {
   }
 
   // compute the force exerted on y direction
-  private double calcForceExertedByY(Planet anotherPlanet){
+  public double calcForceExertedByY(Planet anotherPlanet){
     double F = calcForceExertedBy(anotherPlanet);
     double dy = anotherPlanet.yyPos - this.yyPos;
     double r = calcDistance(anotherPlanet);
