@@ -60,7 +60,9 @@ public class ArrayDeque<T> {
 
     T value = elements[head];
     elements[head] = null;
-    head = (head + 1)%elements.length;
+    if(size > 1){
+      head = (head + 1)%elements.length;
+    }
     size--;
     return value;
   }
@@ -73,7 +75,9 @@ public class ArrayDeque<T> {
 
     T value = elements[tail];
     elements[tail] = null;
-    tail = tail - 1 < 0? elements.length - 1: tail-1 ;
+    if(size > 1){
+      tail = tail - 1 < 0? elements.length - 1: tail-1 ;
+    }
     size--;
     return value;
   }

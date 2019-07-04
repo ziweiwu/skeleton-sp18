@@ -20,9 +20,9 @@ public class ArrayDequeTest {
     return true;
   }
 
-  public static boolean checkGetRecursive(String expected, String actual) {
+  public static boolean checkEqual(String expected, String actual) {
     if (expected.equals(actual) == false) {
-      System.out.println("Get recurisve() returned " + actual + ", but expected: " + expected);
+      System.out.println("returned " + actual + ", but expected: " + expected);
       return false;
     }
     return true;
@@ -85,17 +85,23 @@ public class ArrayDequeTest {
 
     System.out.println("Running add/remove test.");
 
-    ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+    ArrayDeque<String> lld1 = new ArrayDeque<>();
     // should be empty
     boolean passed = checkEmpty(true, lld1.isEmpty());
 
-    lld1.addFirst(10);
+    lld1.addFirst("10");
     // should not be empty
     passed = checkEmpty(false, lld1.isEmpty()) && passed;
 
     lld1.removeFirst();
     // should be empty
     passed = checkEmpty(true, lld1.isEmpty()) && passed;
+
+    lld1.addFirst("0");
+    lld1.removeLast();
+    lld1.addFirst("2");
+    lld1.addFirst("3");
+    passed = checkEqual("2", lld1.removeLast()) && passed;
 
     printTestStatus(passed);
   }
@@ -157,7 +163,6 @@ public class ArrayDequeTest {
 
     printTestStatus(passed);
   }
-
 
   public static void main(String[] args) {
     System.out.println("Running tests.\n");
