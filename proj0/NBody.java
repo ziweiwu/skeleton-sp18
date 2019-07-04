@@ -4,7 +4,7 @@ import java.io.FileReader;
 
 public class NBody {
   // return radius from a text file
-  static double readRadius(String filename){
+  public static double readRadius(String filename){
     double radius = 0.0;
 
     try {
@@ -29,7 +29,7 @@ public class NBody {
   }
 
   // read planets from a text file
-  static Planet[] readPlanets(String filename){
+  public static Planet[] readPlanets(String filename){
     Planet[] planets = null;
 
     try {
