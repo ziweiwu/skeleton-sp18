@@ -24,10 +24,12 @@ public class ArrayDeque<T> {
     if(size == elements.length) {
       expand();
     }
-    if(elements[tail] != null) {
+    if(size == 0) {
+      elements[tail] = item;
+    }else{
       tail = (tail + 1)%elements.length;
+      elements[tail] = item;
     }
-    elements[tail] = item;
     size++;
   }
 

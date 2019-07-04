@@ -108,17 +108,20 @@ public class ArrayDequeTest {
 
     boolean passed = checkEmpty(true, lld1.isEmpty());
 
-    lld1.addFirst("front");
-    passed = checkGet("front", lld1.get(0)) && passed;
+    lld1.addFirst("front1");
+    passed = checkGet("front1", lld1.get(0)) && passed;
 
-    lld1.addFirst("front");
-    passed = checkGet("front", lld1.get(0)) && passed;
+    lld1.addFirst("front2");
+    passed = checkGet("front2", lld1.get(0)) && passed;
 
     lld1.addLast("middle");
     passed = checkGet("middle", lld1.get(2)) && passed;
 
-    lld1.addLast("back");
-    passed = checkGet("back", lld1.get(3)) && passed;
+    lld1.addLast("back1");
+    passed = checkGet("back1", lld1.get(3)) && passed;
+
+    lld1.addLast("back2");
+    passed = checkGet("back2", lld1.get(4)) && passed;
 
     System.out.println("Printing out deque: ");
     lld1.printDeque();
