@@ -146,7 +146,7 @@ public class ArrayDequeTest {
     System.out.println("Printing out deque: ");
 
     for(int i = 0 ; i < 19999; i++) {
-      lld1.removeFirst();
+      lld1.removeLast();
     }
     passed = checkSize(1, lld1.size()) && passed;
 

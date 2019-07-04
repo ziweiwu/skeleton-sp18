@@ -71,7 +71,7 @@ public class ArrayDeque<T> {
 
     T value = elements[tail];
     elements[tail] = null;
-    tail = (tail - 1) % elements.length;
+    tail = tail - 1 < 0? elements.length - 1: tail-1 ;
     size--;
     return value;
   }
