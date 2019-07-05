@@ -1,132 +1,132 @@
 public class ArrayDeque<T> {
 
-  private T[] elements;
-  private int size;
+    private T[] elements;
+    private int size;
 
-  private int head;
-  private int tail;
+    private int head;
+    private int tail;
 
-  public void addFirst(T item) {
-    if (size == elements.length) {
-      expand();
-    }
-    if (size == 0) {
-      elements[head] = item;
-    } else {
-      head = head - 1 < 0 ? elements.length - 1 : head - 1;
-      elements[head] = item;
-    }
-    size++;
-  }
-
-
-  public void addLast(T item) {
-    if (size == elements.length) {
-      expand();
-    }
-    if (size == 0) {
-      elements[tail] = item;
-    } else {
-      tail = (tail + 1) % elements.length;
-      elements[tail] = item;
-    }
-    size++;
-  }
-
-
-  public boolean isEmpty() {
-    return size == 0;
-  }
-
-
-  public int size() {
-    return size;
-  }
-
-
-  public void printDeque() {
-    for (int i = 0; i < size; i++) {
-      int index = (head + i) % elements.length;
-      System.out.print(elements[index] + " ");
-    }
-    System.out.print("\n");
-  }
-
-
-  public T removeFirst() {
-    if (size == 0) {
-      return null;
+    public void addFirst(T item) {
+        if (size == elements.length) {
+            expand();
+        }
+        if (size == 0) {
+            elements[head] = item;
+        } else {
+            head = head - 1 < 0 ? elements.length - 1 : head - 1;
+            elements[head] = item;
+        }
+        size++;
     }
 
-    if (size <= elements.length / 4) {
-      shrink();
+
+    public void addLast(T item) {
+        if (size == elements.length) {
+            expand();
+        }
+        if (size == 0) {
+            elements[tail] = item;
+        } else {
+            tail = (tail + 1) % elements.length;
+            elements[tail] = item;
+        }
+        size++;
     }
 
-    T value = elements[head];
-    elements[head] = null;
-    if (size > 1) {
-      head = (head + 1) % elements.length;
-    }
-    size--;
-    return value;
-  }
 
-
-  public T removeLast() {
-    if (size == 0) {
-      return null;
+    public boolean isEmpty() {
+        return size == 0;
     }
 
-    if (size <= elements.length / 4) {
-      shrink();
+
+    public int size() {
+        return size;
     }
 
-    T value = elements[tail];
-    elements[tail] = null;
-    if (size > 1) {
-      tail = tail - 1 < 0 ? elements.length - 1 : tail - 1;
+
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
+            int index = (head + i) % elements.length;
+            System.out.print(elements[index] + " ");
+        }
+        System.out.print("\n");
     }
-    size--;
-    return value;
-  }
 
 
-  public T get(int index) {
-    if (index >= 0 && index < size && size > 0) {
-      int idx = (head + index) % elements.length;
-      return elements[idx];
+    public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
+
+        if (size <= elements.length / 4) {
+            shrink();
+        }
+
+        T value = elements[head];
+        elements[head] = null;
+        if (size > 1) {
+            head = (head + 1) % elements.length;
+        }
+        size--;
+        return value;
     }
-    return null;
-  }
 
-  private void expand() {
-    int originalSize = elements.length;
-    int newSize = elements.length * 2;
-    T[] newElements = (T[]) new Object[newSize];
-    for (int i = 0; i < size; i++) {
-      newElements[i] = elements[(head + i) % originalSize];
+
+    public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
+
+        if (size <= elements.length / 4) {
+            shrink();
+        }
+
+        T value = elements[tail];
+        elements[tail] = null;
+        if (size > 1) {
+            tail = tail - 1 < 0 ? elements.length - 1 : tail - 1;
+        }
+        size--;
+        return value;
     }
-    elements = newElements;
-    head = 0;
-    tail = head + size - 1;
-  }
 
-  private void shrink() {
-    int originalSize = elements.length;
-    int newSize = elements.length / 2;
-    T[] newElements = (T[]) new Object[newSize];
-    for (int i = 0; i < size; i++) {
-      newElements[i] = elements[(head + i) % originalSize];
+
+    public T get(int index) {
+        if (index >= 0 && index < size && size > 0) {
+            int idx = (head + index) % elements.length;
+            return elements[idx];
+        }
+        return null;
     }
-    elements = newElements;
-    head = 0;
-    tail = head + size - 1;
-  }
 
-  public ArrayDeque() {
-    elements = (T[]) new Object[8];
-    head = 0;
-    tail = 0;
-    size = 0;
-  }
+    private void expand() {
+        int originalSize = elements.length;
+        int newSize = elements.length * 2;
+        T[] newElements = (T[]) new Object[newSize];
+        for (int i = 0; i < size; i++) {
+            newElements[i] = elements[(head + i) % originalSize];
+        }
+        elements = newElements;
+        head = 0;
+        tail = head + size - 1;
+    }
+
+    private void shrink() {
+        int originalSize = elements.length;
+        int newSize = elements.length / 2;
+        T[] newElements = (T[]) new Object[newSize];
+        for (int i = 0; i < size; i++) {
+            newElements[i] = elements[(head + i) % originalSize];
+        }
+        elements = newElements;
+        head = 0;
+        tail = head + size - 1;
+    }
+
+    public ArrayDeque() {
+        elements = (T[]) new Object[8];
+        head = 0;
+        tail = 0;
+        size = 0;
+    }
 }
