@@ -142,19 +142,19 @@ public class ArrayDequeTest {
 
     boolean passed = checkEmpty(true, lld1.isEmpty());
 
-    for(int i = 0; i < 10000; i++){
+    for (int i = 0; i < 10000; i++) {
       lld1.addLast("e");
     }
     passed = checkSize(10000, lld1.size()) && passed;
 
-    for(int i = 0; i < 10000; i++){
+    for (int i = 0; i < 10000; i++) {
       lld1.addFirst("e");
     }
     passed = checkSize(20000, lld1.size()) && passed;
 
     System.out.println("Printing out deque: ");
 
-    for(int i = 0 ; i < 19999; i++) {
+    for (int i = 0; i < 19999; i++) {
       lld1.removeLast();
     }
     passed = checkSize(1, lld1.size()) && passed;

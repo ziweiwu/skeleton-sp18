@@ -1,16 +1,15 @@
-import java.util.List;
-
 /*
  * generic version of LinkedListDeque
  * @param<T> the type of the value being boxed
  */
 public class LinkedListDeque<T> {
   // an inner class that represents a list node
-  private class ListNode{
+  private class ListNode {
     T value;
     ListNode prev;
     ListNode next;
-    ListNode(T value){
+
+    ListNode(T value) {
       this.value = value;
     }
   }
@@ -20,7 +19,7 @@ public class LinkedListDeque<T> {
   private ListNode tail;
   private int size;
 
-  public void addFirst(T item){
+  public void addFirst(T item) {
     ListNode newNode = new ListNode(item);
     ListNode next = head.next;
     newNode.next = next;
@@ -31,7 +30,7 @@ public class LinkedListDeque<T> {
   }
 
 
-  public void addLast(T item){
+  public void addLast(T item) {
     ListNode newNode = new ListNode(item);
     ListNode prev = tail.prev;
     newNode.prev = prev;
@@ -42,20 +41,20 @@ public class LinkedListDeque<T> {
   }
 
 
-  public boolean isEmpty(){
-    return size==0;
+  public boolean isEmpty() {
+    return size == 0;
   }
 
 
-  public int size(){
+  public int size() {
     return size;
   }
 
 
-  public void printDeque(){
-    if(size > 0){
+  public void printDeque() {
+    if (size > 0) {
       ListNode cur = head.next;
-      while(cur != tail){
+      while (cur != tail) {
         System.out.print(cur.value + " ");
         cur = cur.next;
       }
@@ -64,8 +63,8 @@ public class LinkedListDeque<T> {
   }
 
 
-  public T removeFirst(){
-    if(size > 0){
+  public T removeFirst() {
+    if (size > 0) {
       T value = head.next.value;
 
       ListNode nextNext = head.next.next;
@@ -79,8 +78,8 @@ public class LinkedListDeque<T> {
   }
 
 
-  public T removeLast(){
-    if(size > 0){
+  public T removeLast() {
+    if (size > 0) {
       T value = tail.prev.value;
 
       ListNode prevPrev = tail.prev.prev;
@@ -96,9 +95,9 @@ public class LinkedListDeque<T> {
 
   public T get(int index) {
 
-    if(index < size && index >= 0 && size > 0){
+    if (index < size && index >= 0 && size > 0) {
       ListNode cur = head.next;
-      for(int i = 0; i < index; i++){
+      for (int i = 0; i < index; i++) {
         cur = cur.next;
       }
       return cur.value;
@@ -107,7 +106,7 @@ public class LinkedListDeque<T> {
   }
 
 
-  public LinkedListDeque(){
+  public LinkedListDeque() {
     head = new ListNode(null);
     tail = new ListNode(null);
     head.next = tail;
@@ -118,18 +117,18 @@ public class LinkedListDeque<T> {
     size = 0;
   }
 
-  public T getRecursive(int index){
-    if(size==0) {
+  public T getRecursive(int index) {
+    if (size == 0) {
       return null;
     }
     return getRecursiveHelper(index, head.next);
   }
 
-  private T getRecursiveHelper(int index, ListNode node){
-    if(index <  0 || index >= size){
+  private T getRecursiveHelper(int index, ListNode node) {
+    if (index < 0 || index >= size) {
       return null;
     }
-    if(index == 0){
+    if (index == 0) {
       return node.value;
     }
     return getRecursiveHelper(--index, node.next);
