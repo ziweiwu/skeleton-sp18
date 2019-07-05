@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class LinkedListDeque<T> {
   // an inner class that represents a list node
-  class ListNode{
+  private class ListNode{
     T value;
     ListNode prev;
     ListNode next;
@@ -125,7 +125,7 @@ public class LinkedListDeque<T> {
     return getRecursiveHelper(index, head.next);
   }
 
-  public T getRecursiveHelper(int index, ListNode node){
+  private T getRecursiveHelper(int index, ListNode node){
     if(index <  0 || index >= size){
       return null;
     }

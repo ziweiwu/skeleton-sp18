@@ -54,6 +54,10 @@ public class ArrayDeque<T> {
 
 
   public T removeFirst(){
+    if(size == 0) {
+      return null;
+    }
+
     if(size <= elements.length/ 4) {
       shrink();
     }
@@ -69,6 +73,10 @@ public class ArrayDeque<T> {
 
 
   public T removeLast(){
+    if(size == 0){
+      return null;
+    }
+
     if(size <= elements.length/4) {
       shrink();
     }
